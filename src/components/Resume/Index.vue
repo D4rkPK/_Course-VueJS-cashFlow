@@ -12,6 +12,11 @@
 </template>
 
 <script>
+const currencyFormatter = new Intl.NumberFormat("es-GT", {
+  style: "currency",
+  currency: "GTQ",
+});
+
 export default {
   props: {
     totalLabel: {
@@ -35,6 +40,9 @@ export default {
     },
     amountVisual() {
       return this.amount !== null ? this.amount : this.totalAmount;
+    },
+    amountCurrency() {
+      return currencyFormatter.format(this.amountVisual);
     },
   },
 };
